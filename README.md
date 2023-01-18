@@ -17,8 +17,19 @@ C++은 C언어를 기초로 삼아 만든 언어이므로, 기존의 C 표준 �
 |지역 변수 선언|`{}`로 에워싼 블록의 선두에서만|블록 내의 어느 곳에서나 가능하나<br>변수 선언은 변수 사용 직전에 하기를 권장<pre><code>int Number <br>Number = 3;</code></pre>|
 |카운터를 for문 안에 선언|블록을 시작하고 카운터 선언|for문 안에 카운터 선언<pre><code>for(<U>**int i=0**</U>; i<=5;i++>)</code></pre>|
 |#define 대신 const 사용|수치를 정의 할 때 #define 사용|수치를 정의 할 때 const 로 대신 사용 및 권장|
-
+|[헤더 파일(Header file)](#헤더-파일header-file)|헤더파일 임포트가 필요|헤더파일 임포트 불필요 <br>같은 프로젝트에 cs 파일일 경우 자동으로 인식 후 컴파일함|
+|클래스 상속에서 키워드 사용???|부모 클래스에서 virtual<br>자식 클래스에서 virtual 와 override<br>자식의 자식 클래스도 virtual 과 override |부모 클래스에서 virtual<br>자식 클래스에서 override<br>자식의 자식 클래스에서도 override|
+|delete 연산자|메모리에 블록 할당 취소에 사용|[가비지 컬렉터(Garbage Collector)](#가비지-컬렉터garbage-collector)가 메모리를 사용하지 않는 시점에 알아서 삭제함|
+|구조체(Struct)???|상속 가능|상속 불가능|
+|new 키워드<br>struct 와 class 선언시 어떤 차이가 있는지 확인???|힙 메모리에 포인터 생성|객체 생성|
+|상속관계일 때<br>생성자와 함수 선언 및 호출<br>3개의 상속 클래스로 테스트 해보기???|||
+|c# 에서 2개로 분리된 클래스를 using 을 사용해 참조하면 분리된 클래스중에 하나만 인식한다는데 확인 필요??? |||
+|Generic Programing???|Template|Generic|
+|클래스에서 접근 한정자 지정 위치???|||
+|delegate???|||
+|Event???|||
 ## const
+- 배열이나 포인터를 매개변수로 넘겨줄 때, const 를 사용하면 함수 내에서 수정이 불가한 읽기 전용으로 만들 수 있음
 - const 를 지정한 포인터를 일반 포인터에 대입하려고 하면 컴파일 에러 남
 ```C++
 void ChangeString(const char* ptr)
@@ -57,7 +68,7 @@ printf(R"(C:\github)");   // C:\github 로 출력
   enum Colors {Red, Green = 10, Yellow, Blue= 20, Purple}; // 0, 10, 11, 20, 21
   ```
 - enum class
-  - enum 과는 다르게 각 요소의 유효 범위가 그열거형 내부로만 한정됨
+  - enum 과는 다르게 각 요소의 유효 범위가 해당 열거형 내부로만 한정됨
     ```C++
     enum Colors {Red, Blue, Green};    
     enum LightColors {Red, Blue, Green}; // enum 을 사용하면 요소 이름을 중복하여 사용불가
@@ -79,6 +90,11 @@ printf(R"(C:\github)");   // C:\github 로 출력
 > ##### 함수의 이름과 형태를 컴파일러에게 알려주는 것
 > ##### 함수의 내용을 정의하기 전에 '*함수의 호출 방법* '을 미리 기술해 두는 것
 > ##### 함수를 호출하기 전에 '*함수의 정의* '가 없을 경우, 반드시 프로토 타입을 선언해야됨
+#### 헤더 파일(Header file)
+> ##### 프로그래밍에서의 정보 파일로 프로그램의 최초에 있으며, 그 프로그램 중의 함수가 사용하는 데이터의 형이나 변수의 정의가 들어있다
+#### 가비지 컬렉터(Garbage Collector)
+> ##### 애플리케이션의 메모리 할당 및 해제를 관리
+
 ---
 [C 언어와 C++ 의 차이점](#c-언어와-c-의-차이점) <!-- +기호를 없애야 링크 연결됨 -->
 
